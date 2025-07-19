@@ -1,70 +1,98 @@
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #89f7fe, #66a6ff);
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #74ebd5, #acb6e5);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
 }
 
-.weather-app {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.weather-container {
     text-align: center;
+    padding: 30px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
     width: 90%;
-    max-width: 350px;
+    max-width: 400px;
+    animation: fade-in 0.5s ease-in-out;
 }
 
-h1 {
-    margin-bottom: 15px;
-    font-size: 22px;
+.app-title {
+    font-size: 28px;
+    margin-bottom: 20px;
     color: #333;
 }
 
-.search {
-    margin-bottom: 15px;
+.search-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 #city-input {
     padding: 10px;
-    width: calc(100% - 22px);
-    margin-bottom: 10px;
+    width: 70%;
+    border-radius: 8px;
     border: 1px solid #ccc;
-    border-radius: 5px;
     font-size: 16px;
     outline: none;
 }
 
 #search-btn {
-    padding: 10px 20px;
+    padding: 10px 16px;
     background-color: #007bff;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: 0.3s ease;
     font-size: 16px;
-    transition: background 0.3s ease;
 }
 
 #search-btn:hover {
     background-color: #0056b3;
 }
 
-.weather-info {
-    display: none; /* Hidden by default */
-    animation: fade-in 0.5s ease-in-out;
+.weather-card {
+    display: none;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
 }
 
-.weather-info p {
-    margin: 8px 0;
+.weather-data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.data-item {
+    background-color: #f1f1f1;
+    padding: 12px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.data-item:hover {
+    transform: scale(1.05);
+}
+
+.data-item i {
+    display: block;
+    font-size: 22px;
+    margin-bottom: 5px;
+    color: #007bff;
+}
+
+.data-item p {
+    margin: 0;
     font-size: 16px;
-    color: #555;
+    color: #333;
 }
 
-/* Fade-in animation for weather info */
 @keyframes fade-in {
     from {
         opacity: 0;
