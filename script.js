@@ -1,4 +1,4 @@
-document.getElementById('search-btn').addEventListener('click', function () {
+document.getElementById('search-btn').addEventListener('click', function() {
     const city = document.getElementById('city-input').value.trim();
     if (city) {
         fetchWeather(city);
@@ -8,26 +8,31 @@ document.getElementById('search-btn').addEventListener('click', function () {
 });
 
 function fetchWeather(city) {
-    const apiKey = "e6f7a07330ead5a715a2d423528f9c06";
-    const apiUrl = https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric;
+    const apiKey = "e6f7a07330ead5a715a2d423528f9c06"; 
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
     fetch(apiUrl)
         .then(response => {
-            if (!response.ok) throw new Error("City not found");
+            if (!response.ok) {
+                throw new Error("City not found");
+            }
             return response.json();
         })
-        .then(data => displayWeather(data))
+        .then(data => {
+            displayWeather(data);
+        })
         .catch(error => {
-            console.error('Error:', error);
-            alert('City not found. Try again.');
+            console.error('Error fetching weather data:', error);
+            alert('City not found. Please try again.');
         });
 }
 
 function displayWeather(data) {
     document.getElementById('city-name').textContent = data.name;
-    document.getElementById('temperature').textContent = ${data.main.temp}°C;
-    document.getElementById('weather-condition').textContent = data.weather[0].description;
-    document.getElementById('humidity').textContent = ${data.main.humidity}%;
-    document.getElementById('wind-speed').textContent = ${data.wind.speed} m/s;
-    document.querySelector('.weather-card').style.display = 'block';
+    document.getElementById('temperature').textContent = `Temperature: ${data.main.temp}°C`;
+    document.getElementById('weather-condition').textContent = `Condition: ${data.weather[0].description}`;
+    document.getElementById('humidity').textContent = `Humidity: ${data.main.humidity}%`;
+    document.getElementById('wind-speed').textContent = `Wind Speed: ${data.wind.speed} m/s`;
+
+    document.querySelector('.weather-info').style.display = 'block';
 }
